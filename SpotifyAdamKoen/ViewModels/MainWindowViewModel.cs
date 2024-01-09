@@ -1,5 +1,6 @@
 ﻿using SpotifyAK.Classes;
 using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace SpotifyAdamKoen.ViewModels
 {
@@ -19,9 +20,9 @@ namespace SpotifyAdamKoen.ViewModels
             }
         }
 
-        private object _currentView;
+        private ContentControl _currentView;
 
-        public object CurrentView
+        public ContentControl CurrentView
         {
             get { return _currentView; }
             set

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Controls;
 using System.Windows.Input;
 using CSharpLes42;
 using SpotifyAdamKoen;
@@ -19,12 +20,12 @@ namespace SpotifyAdamKoen.ViewModels
 
         private void NavigateToSong(object obj)
         {
-            MainWindowViewModel.Instance.CurrentView = new SongView();
+            MainWindowViewModel.Instance.CurrentView.Content = new SongView();
         }
 
         private void NavigateToAlbum(object obj)
         {
-            MainWindowViewModel.Instance.CurrentView = new AlbumView();
+            MainWindowViewModel.Instance.CurrentView.Content = new AlbumView();
         }
     }
 }
