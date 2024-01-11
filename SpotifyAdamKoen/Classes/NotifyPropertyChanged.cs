@@ -5,16 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpotifyAK.Classes
+namespace SpotifyAdamKoen.Classes
 {
     public class NotifyPropertyChanged : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        public void RaisePropertyChange(string propertyname)
+
+        public void RaisePropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using SpotifyAK.Classes;
+﻿using SpotifyAdamKoen.Classes;
 using System.ComponentModel;
 using System.Windows.Controls;
 
@@ -34,7 +34,7 @@ namespace SpotifyAdamKoen.ViewModels
 
         public MainWindowViewModel()
         {
-            _currentView = new SongView();
+            _currentView = new StartView();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
