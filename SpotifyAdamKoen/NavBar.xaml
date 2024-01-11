@@ -12,8 +12,8 @@
     </UserControl.DataContext>
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="#40E0D0" Width="800" >
-            <Button Content="Song" Command="{Binding NavigateToSongCommand}" Margin="5"/>
-            <Button Content="Album" Command="{Binding NavigateToAlbumCommand}" Margin="5"/>
+            <Button Content="Song" Command="{Binding NavigateToSongCommand}" Margin="5" Width="100" Background="blue"/>
+            <Button Content="Album" Command="{Binding NavigateToAlbumCommand}" Margin="5" Width="100" Background="Blue"/>
         </StackPanel>
     </Grid>
 </UserControl>

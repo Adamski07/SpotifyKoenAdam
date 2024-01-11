@@ -12,20 +12,26 @@ namespace SpotifyAdamKoen.ViewModels
         public ICommand NavigateToSongCommand { get; private set; }
         public ICommand NavigateToAlbumCommand { get; private set; }
 
+        public SongView song;
+
+        public AlbumView album;
+
         public NavBarViewModel()
         {
+            album = new AlbumView();
+            song = new SongView();
             NavigateToSongCommand = new RelayCommand(NavigateToSong);
             NavigateToAlbumCommand = new RelayCommand(NavigateToAlbum);
         }
 
         private void NavigateToSong(object obj)
         {
-            MainWindowViewModel.Instance.CurrentView.Content = new SongView();
+            MainWindowViewModel.Instance.CurrentView.Content = song;
         }
 
         private void NavigateToAlbum(object obj)
         {
-            MainWindowViewModel.Instance.CurrentView.Content = new AlbumView();
+            MainWindowViewModel.Instance.CurrentView.Content = album;
         }
     }
 }
