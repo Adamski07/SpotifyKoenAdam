@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpotifyAK.Classes
+namespace SpotifyAdamKoen.Classes
 {
     public class NotifyPropertyChanged : INotifyPropertyChanged
     {

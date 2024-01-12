@@ -1,4 +1,4 @@
-﻿using SpotifyAK.Classes;
+﻿using SpotifyAdamKoen.Classes;
 using System.ComponentModel;
 using System.Windows.Controls;
 

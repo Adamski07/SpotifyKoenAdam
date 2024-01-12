@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Input;
-using CSharpLes42;
 using SpotifyAdamKoen;
-using SpotifyAK.Classes;
+using SpotifyAdamKoen.Classes;
 
 namespace SpotifyAdamKoen.ViewModels
 {
