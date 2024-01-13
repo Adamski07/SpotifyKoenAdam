@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace SpotifyAdamKoen.Models
 {
-    internal class Album : NotifyPropertyChanged
+    public class Album : NotifyPropertyChanged
     {
         private int id;
         public int Id

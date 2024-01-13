@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 using Newtonsoft.Json;
 using SpotifyAdamKoen.Classes;
@@ -12,18 +9,6 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
 {
     internal class SongCreateViewModel : NotifyPropertyChanged
     {
-        private ObservableCollection<Song> songs;
-
-        public ObservableCollection<Song> Songs
-        {
-            get => songs;
-            set
-            {
-                songs = value;
-                RaisePropertyChanged(nameof(Songs));
-            }
-        }
-
         private string artist;
         public string Artist
         {
@@ -68,44 +53,24 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
             }
         }
 
-        private string saveMessage;
-        public string SaveMessage
-        {
-            get => saveMessage;
-            set
-            {
-                saveMessage = value;
-                RaisePropertyChanged(nameof(SaveMessage));
-            }
-        }
-
         public ICommand SaveSongCommand { get; set; }
 
         public SongCreateViewModel()
         {
-            LoadSongs();
-
             SaveSongCommand = new RelayCommand(SaveSong);
         }
 
         private void SaveSong(object obj)
         {
-            // Ensure Songs collection is initialized
-            if (Songs == null)
-            {
-                Songs = new ObservableCollection<Song>();
-            }
-
-            // Validate input fields
             if (string.IsNullOrWhiteSpace(Artist) || string.IsNullOrWhiteSpace(Genre) || ReleaseDate == default)
             {
                 SaveMessage = "All fields are required.";
                 return;
             }
 
-            if (DurationInSeconds <= 0) 
+            if (DurationInSeconds <= 0)
             {
-                SaveMessage = "duration must be a positive value.";
+                SaveMessage = "Duration must be a positive value.";
                 return;
             }
 
@@ -118,50 +83,26 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
                 DurationInSeconds = DurationInSeconds
             };
 
-            Songs.Add(newSong);
-
-            SaveSongsToJson();
+            SongRepository.Songs.Add(newSong);
+            SongRepository.SaveSongsToJson();
             SaveMessage = "Song saved successfully!";
         }
 
-
         private int GenerateRandomId()
         {
-            // Generate a random 5-digit ID
             Random random = new Random();
             return random.Next(10000, 99999);
         }
 
-
-        private void LoadSongs()
+        private string saveMessage;
+        public string SaveMessage
         {
-            string jsonFilePath = "C:\\Users\\adam9\\source\\repos\\Adamski07\\SpotifyKoenAdam\\SpotifyAdamKoen\\songs.json";
-            if (File.Exists(jsonFilePath))
+            get => saveMessage;
+            set
             {
-                string jsonContent = File.ReadAllText(jsonFilePath);
-                Songs = JsonConvert.DeserializeObject<ObservableCollection<Song>>(jsonContent);
-            }
-            else
-            {
-                Songs = new ObservableCollection<Song>();
+                saveMessage = value;
+                RaisePropertyChanged(nameof(SaveMessage));
             }
         }
-
-        private void SaveSongsToJson()
-        {
-            try
-            {
-                string jsonFileName = "C:\\Users\\adam9\\source\\repos\\Adamski07\\SpotifyKoenAdam\\SpotifyAdamKoen\\songs.json";
-                string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, jsonFileName);
-
-                string jsonContent = JsonConvert.SerializeObject(Songs, Formatting.Indented);
-                File.WriteAllText(jsonFilePath, jsonContent);
-            }
-            catch (Exception ex)
-            {
-                saveMessage = ex.ToString();
-            }
-        }
-
     }
 }
