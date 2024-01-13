@@ -20,7 +20,7 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
             set
             {
                 songs = value;
-                RaisePropertyChange(nameof(Songs));
+                RaisePropertyChanged(nameof(Songs));
             }
         }
 
@@ -31,7 +31,7 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
             set
             {
                 artist = value;
-                RaisePropertyChange(nameof(Artist));
+                RaisePropertyChanged(nameof(Artist));
             }
         }
 
@@ -42,7 +42,7 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
             set
             {
                 genre = value;
-                RaisePropertyChange(nameof(Genre));
+                RaisePropertyChanged(nameof(Genre));
             }
         }
 
@@ -53,7 +53,7 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
             set
             {
                 releaseDate = value;
-                RaisePropertyChange(nameof(ReleaseDate));
+                RaisePropertyChanged(nameof(ReleaseDate));
             }
         }
 
@@ -64,7 +64,7 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
             set
             {
                 durationInSeconds = value;
-                RaisePropertyChange(nameof(DurationInSeconds));
+                RaisePropertyChanged(nameof(DurationInSeconds));
             }
         }
 
@@ -75,7 +75,7 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
             set
             {
                 saveMessage = value;
-                RaisePropertyChange(nameof(SaveMessage));
+                RaisePropertyChanged(nameof(SaveMessage));
             }
         }
 

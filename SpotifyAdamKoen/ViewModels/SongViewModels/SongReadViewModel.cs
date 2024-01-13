@@ -22,7 +22,7 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
             set
             {
                 songs = value;
-                RaisePropertyChange(nameof(Songs));
+                RaisePropertyChanged(nameof(Songs));
             }
         }
 

@@ -23,7 +23,7 @@ namespace SpotifyAdamKoen.Models
                 if (this._id != value)
                 {
                     this._id = value;
-                    RaisePropertyChange(nameof(Id));
+                    RaisePropertyChanged(nameof(Id));
                 }
             }
         }
@@ -35,7 +35,7 @@ namespace SpotifyAdamKoen.Models
             set
             {
                 this._artist = value;
-                RaisePropertyChange(nameof(Artist));
+                RaisePropertyChanged(nameof(Artist));
             }
         }
 
@@ -46,7 +46,7 @@ namespace SpotifyAdamKoen.Models
             set
             {
                 this._genre = value;
-                RaisePropertyChange(nameof(Genre));
+                RaisePropertyChanged(nameof(Genre));
             }
         }
 
@@ -57,7 +57,7 @@ namespace SpotifyAdamKoen.Models
             set
             {
                 this._releaseDate = value;
-                RaisePropertyChange(nameof(ReleaseDate));
+                RaisePropertyChanged(nameof(ReleaseDate));
             }
         }
 
@@ -68,7 +68,7 @@ namespace SpotifyAdamKoen.Models
             set
             {
                 this._durationInSeconds = value;
-                RaisePropertyChange(nameof(DurationInSeconds));
+                RaisePropertyChanged(nameof(DurationInSeconds));
             }
         }
 
