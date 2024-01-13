@@ -20,11 +20,11 @@ namespace SpotifyAdamKoen.Classes
         }
 
         static SongRepository()
-        {
+        {               
             LoadSongs();
         }
 
-        private static void LoadSongs()
+        public static void LoadSongs()
         {
             string jsonFilePath = "C:\\Users\\adam9\\source\\repos\\Adamski07\\SpotifyKoenAdam\\SpotifyAdamKoen\\songs.json";
             if (File.Exists(jsonFilePath))

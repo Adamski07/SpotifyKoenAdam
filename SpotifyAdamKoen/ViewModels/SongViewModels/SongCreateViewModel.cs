@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Input;
 using Newtonsoft.Json;
@@ -17,6 +18,17 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
             {
                 artist = value;
                 RaisePropertyChanged(nameof(Artist));
+            }
+        }
+
+        private string title;
+        public string Title
+        {
+            get => title;
+            set
+            {
+                title = value;
+                RaisePropertyChanged(nameof(Title));
             }
         }
 
@@ -62,6 +74,11 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
 
         private void SaveSong(object obj)
         {
+            if (SongRepository.Songs == null)
+            {
+                SongRepository.Songs = new ObservableCollection<Song>();
+            }
+
             if (string.IsNullOrWhiteSpace(Artist) || string.IsNullOrWhiteSpace(Genre) || ReleaseDate == default)
             {
                 SaveMessage = "All fields are required.";
@@ -78,6 +95,7 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
             {
                 Id = GenerateRandomId(),
                 Artist = Artist,
+                Title = Title,
                 Genre = Genre,
                 ReleaseDate = ReleaseDate,
                 DurationInSeconds = DurationInSeconds

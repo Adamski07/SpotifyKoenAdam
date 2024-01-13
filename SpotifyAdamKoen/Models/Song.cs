@@ -1,12 +1,7 @@
-﻿using System;
+﻿using SpotifyAdamKoen.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SpotifyAdamKoen.Classes;
-using System.Windows.Controls;
 
 namespace SpotifyAdamKoen.Models
 {
@@ -25,6 +20,17 @@ namespace SpotifyAdamKoen.Models
                     this._id = value;
                     RaisePropertyChanged(nameof(Id));
                 }
+            }
+        }
+
+        private string _title;
+        public string Title
+        {
+            get => this._title;
+            set
+            {
+                this._title = value;
+                RaisePropertyChanged(nameof(Title));
             }
         }
 
@@ -71,6 +77,5 @@ namespace SpotifyAdamKoen.Models
                 RaisePropertyChanged(nameof(DurationInSeconds));
             }
         }
-
     }
 }
