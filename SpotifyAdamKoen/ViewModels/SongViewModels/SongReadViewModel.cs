@@ -4,6 +4,7 @@ using SpotifyAdamKoen.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.IO;
+using System;
 
 
 namespace SpotifyAdamKoen.ViewModels.SongViewModels
@@ -42,10 +43,12 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
 
         private void LoadSongs()
         {
-            string jsonFilePath = "C:\\Users\\adam9\\source\\repos\\Adamski07\\SpotifyKoenAdam\\SpotifyAdamKoen\\songs.json";
-            if (File.Exists(jsonFilePath))
+            // Path relative to the application's executable directory
+            
+     
+            if (File.Exists(@"songs.json"))
             {
-                string jsonContent = File.ReadAllText(jsonFilePath);
+                string jsonContent = File.ReadAllText(@"songs.json");
                 Songs = JsonConvert.DeserializeObject<ObservableCollection<Song>>(jsonContent);
             }
             else

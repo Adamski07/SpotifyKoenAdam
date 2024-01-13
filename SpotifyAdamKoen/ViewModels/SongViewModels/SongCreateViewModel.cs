@@ -135,10 +135,10 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
 
         private void LoadSongs()
         {
-            string jsonFilePath = "C:\\Users\\adam9\\source\\repos\\Adamski07\\SpotifyKoenAdam\\SpotifyAdamKoen\\songs.json";
-            if (File.Exists(jsonFilePath))
+            
+            if (File.Exists(@"songs.json"))
             {
-                string jsonContent = File.ReadAllText(jsonFilePath);
+                string jsonContent = File.ReadAllText(@"songs.json");
                 Songs = JsonConvert.DeserializeObject<ObservableCollection<Song>>(jsonContent);
             }
             else
@@ -151,11 +151,8 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
         {
             try
             {
-                string jsonFileName = "C:\\Users\\adam9\\source\\repos\\Adamski07\\SpotifyKoenAdam\\SpotifyAdamKoen\\songs.json";
-                string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, jsonFileName);
-
                 string jsonContent = JsonConvert.SerializeObject(Songs, Formatting.Indented);
-                File.WriteAllText(jsonFilePath, jsonContent);
+                File.WriteAllText(@"songs.json", jsonContent);
             }
             catch (Exception ex)
             {
