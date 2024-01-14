@@ -1,5 +1,4 @@
-﻿// AlbumCreateViewModel.cs
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
@@ -68,13 +67,11 @@ namespace SpotifyAdamKoen.ViewModels.AlbumViewModels
 
             private void SaveAlbum(object obj)
             {
-                // Ensure Albums collection is initialized
                 if (AlbumRepository.Albums == null)
                 {
                     AlbumRepository.Albums = new System.Collections.ObjectModel.ObservableCollection<Album>();
                 }
 
-                // Validate input fields
                 if (string.IsNullOrWhiteSpace(Title) || ReleaseDate == default || string.IsNullOrWhiteSpace(ArtistDetails))
                 {
                     SaveMessage = "All fields are required.";
@@ -97,7 +94,6 @@ namespace SpotifyAdamKoen.ViewModels.AlbumViewModels
 
             private int GenerateRandomId()
             {
-                // Generate a random 5-digit ID
                 Random random = new Random();
                 return random.Next(10000, 99999);
             }

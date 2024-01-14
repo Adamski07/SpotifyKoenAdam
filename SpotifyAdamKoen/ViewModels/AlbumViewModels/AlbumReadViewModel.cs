@@ -1,5 +1,4 @@
-﻿// AlbumReadViewModel.cs
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Newtonsoft.Json;
 using SpotifyAdamKoen.Classes;
@@ -20,7 +19,6 @@ namespace SpotifyAdamKoen.ViewModels.AlbumViewModels
             AlbumCreateView = new AlbumCreateView();
             NavigateToAlbumCreateCommand = new RelayCommand(NavigateToAlbumCreate);
 
-            // Load albums from JSON
             AlbumRepository.LoadAlbums();
         }
 
@@ -29,7 +27,6 @@ namespace SpotifyAdamKoen.ViewModels.AlbumViewModels
             MainWindowViewModel.Instance.CurrentView.Content = AlbumCreateView;
         }
 
-        // Directly use AlbumRepository.Albums
         public ObservableCollection<Album> Albums => AlbumRepository.Albums;
     }
 }

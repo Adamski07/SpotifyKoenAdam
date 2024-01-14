@@ -19,10 +19,8 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Button to navigate to creating a song -->
             <Button Content="Add Song" Command="{Binding NavigateToSongCreateCommand}" Background="Gray" Width="100" Height="30" Grid.Column="1" HorizontalAlignment="Left" Margin="18,75,0,295" RenderTransformOrigin="0.509,-3.759"/>
 
-            <!-- DataGrid to display songs -->
             <DataGrid ItemsSource="{Binding Songs}" AutoGenerateColumns="False" Margin="266,141,-463,69" Grid.Column="1">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Title" Binding="{Binding Title}" />

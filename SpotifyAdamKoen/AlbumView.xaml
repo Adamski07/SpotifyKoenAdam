@@ -1,5 +1,4 @@
-﻿<!-- AlbumView.xaml -->
-<UserControl x:Class="SpotifyAdamKoen.AlbumView"
+﻿<UserControl x:Class="SpotifyAdamKoen.AlbumView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -15,7 +14,6 @@
         <TextBlock Text="Albums" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Margin="0,10,0,0"/>
         <Button Content="Add Album" Command="{Binding NavigateToAlbumCreateCommand}" Background="Gray" Width="100" Height="30" Grid.Column="1" HorizontalAlignment="Left" Margin="18,75,0,295" RenderTransformOrigin="0.509,-3.759"/>
 
-        <!-- DataGrid to display albums -->
         <DataGrid ItemsSource="{Binding Albums}" AutoGenerateColumns="False" Margin="283,158,313,60">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>

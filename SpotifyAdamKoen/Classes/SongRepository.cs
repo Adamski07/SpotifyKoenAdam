@@ -26,7 +26,8 @@ namespace SpotifyAdamKoen.Classes
 
         public static void LoadSongs()
         {
-            string jsonFilePath = "C:\\Users\\adam9\\source\\repos\\Adamski07\\SpotifyKoenAdam\\SpotifyAdamKoen\\songs.json";
+            string jsonFileName = "songs.json";
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, jsonFileName);
             if (File.Exists(jsonFilePath))
             {
                 string jsonContent = File.ReadAllText(jsonFilePath);
@@ -42,9 +43,8 @@ namespace SpotifyAdamKoen.Classes
         {
             try
             {
-                string jsonFileName = "C:\\Users\\adam9\\source\\repos\\Adamski07\\SpotifyKoenAdam\\SpotifyAdamKoen\\songs.json";
+                string jsonFileName = "songs.json";
                 string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, jsonFileName);
-
                 string jsonContent = JsonConvert.SerializeObject(Songs, Formatting.Indented);
                 File.WriteAllText(jsonFilePath, jsonContent);
             }
