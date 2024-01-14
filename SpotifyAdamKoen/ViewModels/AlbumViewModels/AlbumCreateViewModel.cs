@@ -88,7 +88,7 @@ namespace SpotifyAdamKoen.ViewModels.AlbumViewModels
 
             AlbumRepository.Albums.Add(newAlbum);
 
-                AlbumRepository.SaveAlbumsToJson();
+            AlbumRepository.SaveAlbumsToJson();
             SaveMessage = "Album saved successfully!";
         }
 

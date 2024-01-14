@@ -33,6 +33,7 @@ namespace SpotifyAdamKoen.Classes
 
         private static string GetJsonFilePath()
         {
+            //Makes the json file path (it stores it in the bin/Debug/net7.0-windows folder).
             string jsonFileName = "songs.json";
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, jsonFileName);
         }
@@ -42,6 +43,7 @@ namespace SpotifyAdamKoen.Classes
             string jsonFilePath = GetJsonFilePath();
             if (File.Exists(jsonFilePath))
             {
+                //Gets the json file if it exsists.
                 string jsonContent = File.ReadAllText(jsonFilePath);
                 Songs = JsonConvert.DeserializeObject<ObservableCollection<Song>>(jsonContent);
             }
