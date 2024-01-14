@@ -27,7 +27,8 @@ namespace SpotifyAdamKoen.Classes
         }
 
         static SongRepository()
-        {               
+        {
+            SeedDataIfNeeded();
             LoadSongs();
         }
 
@@ -43,7 +44,7 @@ namespace SpotifyAdamKoen.Classes
             string jsonFilePath = GetJsonFilePath();
             if (File.Exists(jsonFilePath))
             {
-                //Gets the json file if it exsists.
+                //Gets the json file if it exists.
                 string jsonContent = File.ReadAllText(jsonFilePath);
                 Songs = JsonConvert.DeserializeObject<ObservableCollection<Song>>(jsonContent);
             }
@@ -66,5 +67,18 @@ namespace SpotifyAdamKoen.Classes
                 Console.WriteLine(ex.ToString());
             }
         }
+
+        private static void SeedDataIfNeeded()
+        {
+            // Check if the data file exists, if not, seed the data
+            string jsonFilePath = GetJsonFilePath();
+
+            if (!File.Exists(jsonFilePath))
+            {
+                DataSeeder.SeedData();
+            }
+        }
     }
+
+
 }
