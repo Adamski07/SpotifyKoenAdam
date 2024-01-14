@@ -6,17 +6,17 @@ namespace SpotifyAdamKoen.ViewModels
 {
     public class MainWindowViewModel : NotifyPropertyChanged
     {
-        private static MainWindowViewModel _instance;
+        private static MainWindowViewModel _mainInstance;
 
-        public static MainWindowViewModel Instance
+        public static MainWindowViewModel MainInstance
         {
             get
             {
-                if (_instance == null)
+                if (_mainInstance == null)
                 {
-                    _instance = new MainWindowViewModel();
+                    _mainInstance = new MainWindowViewModel();
                 }
-                return _instance;
+                return _mainInstance;
             }
         }
 

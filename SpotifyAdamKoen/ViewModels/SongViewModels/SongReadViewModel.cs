@@ -24,7 +24,7 @@ namespace SpotifyAdamKoen.ViewModels.SongViewModels
 
         private void NavigateToSongCreate(object obj)
         {
-            MainWindowViewModel.Instance.CurrentView.Content = SongCreateView;
+            MainWindowViewModel.MainInstance.CurrentView.Content = SongCreateView;
         }
     }
 }

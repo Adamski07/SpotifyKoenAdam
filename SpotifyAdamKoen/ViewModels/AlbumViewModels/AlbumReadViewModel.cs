@@ -24,7 +24,7 @@ namespace SpotifyAdamKoen.ViewModels.AlbumViewModels
 
         private void NavigateToAlbumCreate(object obj)
         {
-            MainWindowViewModel.Instance.CurrentView.Content = AlbumCreateView;
+            MainWindowViewModel.MainInstance.CurrentView.Content = AlbumCreateView;
         }
 
         public ObservableCollection<Album> Albums => AlbumRepository.Albums;

@@ -24,7 +24,7 @@ namespace SpotifyAdamKoen
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = MainWindowViewModel.Instance;
+            DataContext = MainWindowViewModel.MainInstance;
         }
     }
 }

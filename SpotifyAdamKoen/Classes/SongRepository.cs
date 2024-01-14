@@ -12,7 +12,14 @@ namespace SpotifyAdamKoen.Classes
 
         public static ObservableCollection<Song> Songs
         {
-            get => songs;
+            get
+            {
+                if (songs == null)
+                {
+                    LoadSongs();
+                }
+                return songs;
+            }
             set
             {
                 songs = value;
@@ -24,10 +31,15 @@ namespace SpotifyAdamKoen.Classes
             LoadSongs();
         }
 
-        public static void LoadSongs()
+        private static string GetJsonFilePath()
         {
             string jsonFileName = "songs.json";
-            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, jsonFileName);
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, jsonFileName);
+        }
+
+        public static void LoadSongs()
+        {
+            string jsonFilePath = GetJsonFilePath();
             if (File.Exists(jsonFilePath))
             {
                 string jsonContent = File.ReadAllText(jsonFilePath);
@@ -43,11 +55,10 @@ namespace SpotifyAdamKoen.Classes
         {
             try
             {
-                string jsonFileName = "songs.json";
-                string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, jsonFileName);
+                string jsonFilePath = GetJsonFilePath();
                 string jsonContent = JsonConvert.SerializeObject(Songs, Formatting.Indented);
                 File.WriteAllText(jsonFilePath, jsonContent);
-            }
+            } 
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());

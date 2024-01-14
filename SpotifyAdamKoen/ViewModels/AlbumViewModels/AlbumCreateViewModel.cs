@@ -65,42 +65,42 @@ namespace SpotifyAdamKoen.ViewModels.AlbumViewModels
                 SaveAlbumCommand = new RelayCommand(SaveAlbum);
             }
 
-            private void SaveAlbum(object obj)
+        private void SaveAlbum(object obj)
+        {
+            if (AlbumRepository.Albums == null)
             {
-                if (AlbumRepository.Albums == null)
-                {
-                    AlbumRepository.Albums = new System.Collections.ObjectModel.ObservableCollection<Album>();
-                }
-
-                if (string.IsNullOrWhiteSpace(Title) || ReleaseDate == default || string.IsNullOrWhiteSpace(ArtistDetails))
-                {
-                    SaveMessage = "All fields are required.";
-                    return;
-                }
-
-                var newAlbum = new Album
-                {
-                    Id = GenerateRandomId(),
-                    Title = Title,
-                    ReleaseDate = ReleaseDate,
-                    ArtistDetails = ArtistDetails
-                };
-
-                AlbumRepository.Albums.Add(newAlbum);
-
-                AlbumRepository.SaveAlbumsToJson();
-                SaveMessage = "Album saved successfully!";
+                AlbumRepository.Albums = new ObservableCollection<Album>();
             }
 
-            private int GenerateRandomId()
+            if (string.IsNullOrWhiteSpace(Title) || ReleaseDate == default || string.IsNullOrWhiteSpace(ArtistDetails))
+            {
+                SaveMessage = "All fields are required.";
+                return;
+            }
+
+            var newAlbum = new Album
+            {
+                Id = GenerateRandomId(),
+                Title = Title,
+                ReleaseDate = ReleaseDate,
+                ArtistDetails = ArtistDetails
+            };
+
+            AlbumRepository.Albums.Add(newAlbum);
+
+                AlbumRepository.SaveAlbumsToJson();
+            SaveMessage = "Album saved successfully!";
+        }
+
+        private int GenerateRandomId()
             {
                 Random random = new Random();
                 return random.Next(10000, 99999);
             }
 
             private void LoadAlbums()
-            {
-                AlbumRepository.LoadAlbums();
-            }
+        {
+            AlbumRepository.LoadAlbums();
         }
+    }
     }

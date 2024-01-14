@@ -1,7 +1,7 @@
-﻿// AlbumRepository.cs
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SpotifyAdamKoen.Models;
 
@@ -24,19 +24,29 @@ namespace SpotifyAdamKoen.Classes
             set => albums = value;
         }
 
-        public static void LoadAlbums()
+        static AlbumRepository()
+        {
+            LoadAlbums();
+        }
+
+        private static string GetJsonFilePath()
         {
             string jsonFileName = "albums.json";
-            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, jsonFileName);
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, jsonFileName);
+        }
+
+        public static void LoadAlbums()
+        {
+            string jsonFilePath = GetJsonFilePath();
 
             if (File.Exists(jsonFilePath))
             {
                 string jsonContent = File.ReadAllText(jsonFilePath);
-                Albums = JsonConvert.DeserializeObject<ObservableCollection<Album>>(jsonContent);
+                albums = JsonConvert.DeserializeObject<ObservableCollection<Album>>(jsonContent);
             }
             else
             {
-                Albums = new ObservableCollection<Album>();
+                albums = new ObservableCollection<Album>();
             }
         }
 
@@ -44,9 +54,7 @@ namespace SpotifyAdamKoen.Classes
         {
             try
             {
-                string jsonFileName = "albums.json";
-                string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, jsonFileName);
-
+                string jsonFilePath = GetJsonFilePath();
 
                 string jsonContent = JsonConvert.SerializeObject(Albums, Formatting.Indented);
                 File.WriteAllText(jsonFilePath, jsonContent);
