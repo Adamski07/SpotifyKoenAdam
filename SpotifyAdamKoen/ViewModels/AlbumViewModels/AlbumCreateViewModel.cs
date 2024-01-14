@@ -98,7 +98,7 @@ namespace SpotifyAdamKoen.ViewModels.AlbumViewModels
                 return random.Next(10000, 99999);
             }
 
-            private void LoadAlbums()
+        private void LoadAlbums()
         {
             AlbumRepository.LoadAlbums();
         }
